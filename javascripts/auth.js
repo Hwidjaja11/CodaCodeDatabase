@@ -64,6 +64,35 @@
     return "";
   }
 
+  var MIN_LOADING_MS = 3000;
+  var STEPS = [
+    [0, "Verifying credentials..."],
+    [0.35, "Authorizing..."],
+    [0.7, "Unlocking the database..."]
+  ];
+
+  // Shows a progress bar for at least MIN_LOADING_MS, then calls done().
+  function showProgress(card, done) {
+    card.innerHTML =
+      '<img src="' + logoUrl() + '" alt="" class="coda-login__logo">' +
+      '<h1>Authorizing</h1>' +
+      '<p class="coda-login__status">' + STEPS[0][1] + '</p>' +
+      '<div class="coda-login__bar"><div class="coda-login__fill"></div></div>';
+    var fill = card.querySelector(".coda-login__fill");
+    var status = card.querySelector(".coda-login__status");
+    var start = Date.now();
+    (function tick() {
+      var t = Math.min((Date.now() - start) / MIN_LOADING_MS, 1);
+      fill.style.width = (t * 100) + "%";
+      for (var i = STEPS.length - 1; i >= 0; i--) {
+        if (t >= STEPS[i][0]) { status.textContent = STEPS[i][1]; break; }
+      }
+      if (t < 1) { requestAnimationFrame(tick); return; }
+      status.textContent = "Unlocked!";
+      setTimeout(done, 350);
+    })();
+  }
+
   function buildLogin() {
     var overlay = document.createElement("div");
     overlay.id = "coda-login";
@@ -100,8 +129,10 @@
         return;
       }
       if (ok) {
-        try { sessionStorage.setItem(KEY, JSON.stringify({ user: acct.user, hash: acct.hash })); } catch (e) {}
-        showSite(acct.user);
+        showProgress(form, function () {
+          try { sessionStorage.setItem(KEY, JSON.stringify({ user: acct.user, hash: acct.hash })); } catch (e) {}
+          showSite(acct.user);
+        });
       } else {
         error.textContent = "Wrong username or password.";
         form.password.value = "";
