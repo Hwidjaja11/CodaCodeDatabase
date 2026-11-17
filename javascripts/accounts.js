@@ -4,6 +4,12 @@ window.CODA_ACCOUNTS = [
   {
     "user": "HarveyWidjaja",
     "salt": "f319a390195f5dc63aabe0f1b0e0cb2a",
-    "hash": "19c31d67d27f3d0e77f17c09a700793c90deca17197cf5aca6e892f1cb34efd1"
+    "hash": "19c31d67d27f3d0e77f17c09a700793c90deca17197cf5aca6e892f1cb34efd1",
+    "first": "Harvey",
+    "last": "Widjaja"
   }
 ];
+window.CODA_DB = {
+  "salt": "0c712c35c34280ef671957087e24710c",
+  "hash": "bce65c86d5d4df948986fee0ae3dd39c245daf2ee1363e499246b6a6d476b6ff"
+};
