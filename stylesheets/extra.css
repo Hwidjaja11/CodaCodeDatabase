@@ -35,38 +35,38 @@ html:not(.coda-authed) .md-header {
 
 .coda-login__card {
     width: 100%;
-    max-width: 360px;
+    max-width: 280px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 28px;
+    gap: 8px;
+    padding: 18px;
     border: 1px solid #ddd;
     border-radius: 8px;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
     color: #222;
 }
 
-.coda-login__card h1 { margin: 0; font-size: 1.6rem; }
-.coda-login__card p { margin: 0 0 4px; color: #555; }
-.coda-login__logo { height: 56px; width: auto; align-self: center; }
+.coda-login__card h1 { margin: 0; font-size: 1.1rem; }
+.coda-login__card p { margin: 0 0 2px; color: #555; font-size: 0.75rem; }
+.coda-login__logo { width: 70%; height: auto; align-self: center; }
 
 .coda-login__card label {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    font-size: 0.9rem;
+    gap: 3px;
+    font-size: 0.75rem;
 }
 
 .coda-login__card input {
-    padding: 8px 10px;
-    font-size: 1rem;
+    padding: 5px 8px;
+    font-size: 0.8rem;
     border: 1px solid #bbb;
     border-radius: 4px;
 }
 
 .coda-login__card button {
-    padding: 10px;
-    font-size: 1rem;
+    padding: 7px;
+    font-size: 0.8rem;
     color: #fff;
     background: #1a73e8;
     border: 0;
@@ -75,7 +75,7 @@ html:not(.coda-authed) .md-header {
 }
 
 .coda-login__card button:disabled { opacity: 0.6; cursor: default; }
-.coda-login__error { min-height: 1.2em; color: #c62828; font-size: 0.9rem; }
+.coda-login__error { min-height: 1em; color: #c62828; font-size: 0.75rem; }
 
 #coda-signout {
     margin-left: 8px;
