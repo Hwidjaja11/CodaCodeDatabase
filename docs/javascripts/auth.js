@@ -52,12 +52,24 @@
     addSignOutButton(user);
   }
 
+  // Resolve the logo relative to this script so it works from any page depth.
+  function logoUrl() {
+    var scripts = document.getElementsByTagName("script");
+    for (var i = 0; i < scripts.length; i++) {
+      var src = scripts[i].src || "";
+      if (/javascripts\/auth\.js/.test(src)) {
+        return new URL("../images/CodaCodeOfficialLogo.png", src).href;
+      }
+    }
+    return "";
+  }
+
   function buildLogin() {
     var overlay = document.createElement("div");
     overlay.id = "coda-login";
     overlay.innerHTML =
       '<form class="coda-login__card" autocomplete="on">' +
-      '<img src="' + (document.querySelector(".md-logo img") ? document.querySelector(".md-logo img").src : "") + '" alt="" class="coda-login__logo">' +
+      '<img src="' + logoUrl() + '" alt="CodaCode Game Dev Studios" class="coda-login__logo">' +
       "<h1>Sign in</h1>" +
       "<p>Enter your account to view the database.</p>" +
       '<label>Username<input name="username" type="text" autocomplete="username" required autofocus></label>' +
