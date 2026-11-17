@@ -4,6 +4,7 @@
   var ITERATIONS = 100000;
   var root = document.documentElement;
   var accounts = window.CODA_ACCOUNTS || [];
+  var dbEntry = window.CODA_DB || {};
 
   function hex(buf) {
     return Array.prototype.map.call(new Uint8Array(buf), function (b) {
@@ -11,10 +12,10 @@
     }).join("");
   }
 
-  // Must match make_hash() in tools/add_account.py.
-  async function derive(user, password, salt) {
+  // Must match derive() in tools/add_account.py.
+  async function derive(text, salt) {
     var enc = new TextEncoder();
-    var key = await crypto.subtle.importKey("raw", enc.encode(user + ":" + password), "PBKDF2", false, ["deriveBits"]);
+    var key = await crypto.subtle.importKey("raw", enc.encode(text), "PBKDF2", false, ["deriveBits"]);
     var bits = await crypto.subtle.deriveBits(
       { name: "PBKDF2", hash: "SHA-256", salt: enc.encode(salt), iterations: ITERATIONS }, key, 256);
     return hex(bits);
@@ -25,7 +26,7 @@
       var s = JSON.parse(sessionStorage.getItem(KEY) || "null");
       if (!s) return null;
       var acct = accounts.find(function (a) { return a.user === s.user && a.hash === s.hash; });
-      return acct ? acct.user : null;
+      return acct || null;
     } catch (e) { return null; }
   }
 
@@ -34,22 +35,22 @@
     location.reload();
   }
 
-  function addSignOutButton(user) {
+  function addSignOutButton(acct) {
     var header = document.querySelector(".md-header__inner");
     if (!header || document.getElementById("coda-signout")) return;
     var btn = document.createElement("button");
     btn.id = "coda-signout";
     btn.type = "button";
-    btn.textContent = "Sign out (" + user + ")";
+    btn.textContent = "Sign out (" + (acct.first || acct.user) + ")";
     btn.addEventListener("click", signOut);
     header.appendChild(btn);
   }
 
-  function showSite(user) {
+  function showSite(acct) {
     root.classList.add("coda-authed");
     var overlay = document.getElementById("coda-login");
     if (overlay) overlay.remove();
-    addSignOutButton(user);
+    addSignOutButton(acct);
   }
 
   // Resolve the logo relative to this script so it works from any page depth.
@@ -103,6 +104,7 @@
       "<p>Enter your account to view the database.</p>" +
       '<label>Username<input name="username" type="text" autocomplete="username" required autofocus></label>' +
       '<label>Password<input name="password" type="password" autocomplete="current-password" required></label>' +
+      '<label>Database password<input name="dbpassword" type="password" autocomplete="off" required></label>' +
       '<div class="coda-login__error" role="alert"></div>' +
       '<button type="submit">Sign in</button>' +
       "</form>";
@@ -118,11 +120,14 @@
       submit.disabled = true;
       var user = form.username.value.trim();
       var pass = form.password.value;
+      var dbPass = form.dbpassword.value;
       var acct = accounts.find(function (a) { return a.user === user; });
       var ok = false;
       try {
-        if (acct) ok = (await derive(user, pass, acct.salt)) === acct.hash;
-        else await derive(user, pass, "00000000000000000000000000000000"); // same timing either way
+        // Always run both derivations so timing doesn't reveal which part was wrong.
+        var u = await derive(user + ":" + pass, acct ? acct.salt : "00000000000000000000000000000000");
+        var d = await derive("database:" + dbPass, dbEntry.salt || "00000000000000000000000000000000");
+        ok = !!acct && !!dbEntry.hash && u === acct.hash && d === dbEntry.hash;
       } catch (e) {
         error.textContent = "Sign-in needs a secure (https) connection.";
         submit.disabled = false;
@@ -131,16 +136,17 @@
       if (ok) {
         showProgress(form, function () {
           try { sessionStorage.setItem(KEY, JSON.stringify({ user: acct.user, hash: acct.hash })); } catch (e) {}
-          showSite(acct.user);
+          showSite(acct);
         });
       } else {
-        error.textContent = "Wrong username or password.";
+        error.textContent = "Incorrect login details.";
         form.password.value = "";
+        form.dbpassword.value = "";
         setTimeout(function () { submit.disabled = false; }, 1000);
       }
     });
   }
 
-  var user = currentSession();
-  if (user) showSite(user); else buildLogin();
+  var session = currentSession();
+  if (session) showSite(session); else buildLogin();
 })();

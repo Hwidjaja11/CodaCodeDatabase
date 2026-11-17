@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-"""Add or update a sign-in account for the wiki.
+"""Manage sign-in accounts and the shared database password for the wiki.
 
 Usage:
-    python3 tools/add_account.py USERNAME            # prompts for the password
-    python3 tools/add_account.py USERNAME --remove   # deletes the account
+    python3 tools/add_account.py add USERNAME --first FIRST --last LAST
+    python3 tools/add_account.py remove USERNAME
+    python3 tools/add_account.py dbpassword
 
-Accounts live in docs/javascripts/accounts.js as salted PBKDF2-SHA256 hashes
-(never plain passwords). Commit the changed file to publish the account.
+Passwords are prompted for (not echoed) and stored only as salted
+PBKDF2-SHA256 hashes in docs/javascripts/accounts.js. Commit that file to publish.
 """
+import argparse
 import getpass
 import hashlib
 import json
@@ -23,49 +25,78 @@ HEADER = (
 )
 
 
-def load():
+def derive(text, salt):
+    # Must match derive() in docs/javascripts/auth.js.
+    return hashlib.pbkdf2_hmac("sha256", text.encode(), salt.encode(), ITERATIONS).hex()
+
+
+def account_hash(username, password, salt):
+    return derive(f"{username}:{password}", salt)
+
+
+def db_hash(password, salt):
+    return derive(f"database:{password}", salt)
+
+
+def _read(name, default):
     try:
         text = open(PATH, encoding="utf-8").read()
     except FileNotFoundError:
-        return []
-    match = re.search(r"=\s*(\[.*\]);", text, re.S)
-    return json.loads(match.group(1)) if match else []
+        return default
+    match = re.search(rf"window\.{name}\s*=\s*(.*?);\n", text, re.S)
+    return json.loads(match.group(1)) if match else default
 
 
-def save(accounts):
-    body = json.dumps(accounts, indent=2)
+def load():
+    return _read("CODA_ACCOUNTS", []), _read("CODA_DB", {})
+
+
+def save(accounts, db):
     with open(PATH, "w", encoding="utf-8") as f:
-        f.write(f"{HEADER}window.CODA_ACCOUNTS = {body};\n")
+        f.write(HEADER)
+        f.write(f"window.CODA_ACCOUNTS = {json.dumps(accounts, indent=2)};\n")
+        f.write(f"window.CODA_DB = {json.dumps(db, indent=2)};\n")
 
 
-def make_hash(username, password, salt):
-    # Must match the Web Crypto derivation in auth.js.
-    return hashlib.pbkdf2_hmac(
-        "sha256",
-        f"{username}:{password}".encode(),
-        salt.encode(),
-        ITERATIONS,
-    ).hex()
+def ask_password(label):
+    pw = getpass.getpass(f"{label}: ")
+    if len(pw) < 8:
+        sys.exit("Use at least 8 characters.")
+    if pw != getpass.getpass("Repeat: "):
+        sys.exit("Passwords did not match.")
+    return pw
 
 
 def main():
-    if len(sys.argv) < 2:
-        sys.exit(__doc__)
-    username = sys.argv[1].strip()
-    accounts = [a for a in load() if a["user"] != username]
-    if "--remove" in sys.argv:
-        save(accounts)
-        print(f"Removed '{username}'.")
-        return
-    password = getpass.getpass(f"Password for {username}: ")
-    if len(password) < 8:
-        sys.exit("Use at least 8 characters.")
-    if password != getpass.getpass("Repeat password: "):
-        sys.exit("Passwords did not match.")
-    salt = os.urandom(16).hex()
-    accounts.append({"user": username, "salt": salt, "hash": make_hash(username, password, salt)})
-    save(accounts)
-    print(f"Saved '{username}'.")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    add = sub.add_parser("add")
+    add.add_argument("username")
+    add.add_argument("--first", required=True)
+    add.add_argument("--last", required=True)
+    rm = sub.add_parser("remove")
+    rm.add_argument("username")
+    sub.add_parser("dbpassword")
+    args = ap.parse_args()
+
+    accounts, db = load()
+    if args.cmd == "add":
+        username = args.username.strip()
+        accounts = [a for a in accounts if a["user"] != username]
+        pw = ask_password(f"Password for {username}")
+        salt = os.urandom(16).hex()
+        accounts.append({"user": username, "first": args.first, "last": args.last,
+                         "salt": salt, "hash": account_hash(username, pw, salt)})
+        print(f"Saved '{username}'.")
+    elif args.cmd == "remove":
+        accounts = [a for a in accounts if a["user"] != args.username.strip()]
+        print(f"Removed '{args.username}'.")
+    else:
+        pw = ask_password("New database password")
+        salt = os.urandom(16).hex()
+        db = {"salt": salt, "hash": db_hash(pw, salt)}
+        print("Database password updated.")
+    save(accounts, db)
 
 
 if __name__ == "__main__":
