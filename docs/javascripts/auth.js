@@ -1,6 +1,8 @@
 /* Sign-in gate for the wiki. Accounts come from accounts.js (salted hashes). */
 (function () {
   var KEY = "coda_session";
+  var RECENT_KEY = "coda_recent";
+  var RECENT_MS = 5 * 60 * 1000; // a login counts as "recent" for 5 minutes
   var ITERATIONS = 100000;
   var root = document.documentElement;
   var accounts = window.CODA_ACCOUNTS || [];
@@ -21,7 +23,33 @@
     return hex(bits);
   }
 
+  // A page refresh always sends you back to the login page.
+  function wasReloaded() {
+    try {
+      var nav = performance.getEntriesByType("navigation")[0];
+      if (nav) return nav.type === "reload";
+      return performance.navigation && performance.navigation.type === 1;
+    } catch (e) { return false; }
+  }
+
+  function rememberRecent(acct) {
+    try { localStorage.setItem(RECENT_KEY, JSON.stringify({ user: acct.user, ts: Date.now() })); } catch (e) {}
+  }
+
+  // Returns the account of a login from the last 5 minutes, or null. No passwords are stored.
+  function getRecent() {
+    try {
+      var r = JSON.parse(localStorage.getItem(RECENT_KEY) || "null");
+      if (!r || Date.now() - r.ts > RECENT_MS || r.ts > Date.now()) return null;
+      return accounts.find(function (a) { return a.user === r.user; }) || null;
+    } catch (e) { return null; }
+  }
+
   function currentSession() {
+    if (wasReloaded()) {
+      try { sessionStorage.removeItem(KEY); } catch (e) {}
+      return null;
+    }
     try {
       var s = JSON.parse(sessionStorage.getItem(KEY) || "null");
       if (!s) return null;
@@ -102,10 +130,12 @@
       '<img src="' + logoUrl() + '" alt="CodaCode Game Dev Studios" class="coda-login__logo">' +
       "<h1>Sign in</h1>" +
       "<p>Enter your account to view the database.</p>" +
-      '<label>Username<input name="username" type="text" autocomplete="username" required autofocus></label>' +
+      '<button type="button" class="coda-login__recent" hidden></button>' +
+      '<label class="coda-login__userfield">Username<input name="username" type="text" autocomplete="username" required autofocus></label>' +
       '<label>Password<input name="password" type="password" autocomplete="current-password" required></label>' +
       '<label>Database password<input name="dbpassword" type="password" autocomplete="off" required></label>' +
       '<div class="coda-login__error" role="alert"></div>' +
+      '<button type="button" class="coda-login__switch" hidden>Not you? Use a different account</button>' +
       '<button type="submit">Sign in</button>' +
       "</form>";
     document.body.appendChild(overlay);
@@ -113,6 +143,29 @@
     var form = overlay.querySelector("form");
     var error = overlay.querySelector(".coda-login__error");
     var submit = overlay.querySelector("button[type=submit]");
+    var recentBtn = overlay.querySelector(".coda-login__recent");
+    var switchBtn = overlay.querySelector(".coda-login__switch");
+    var userField = overlay.querySelector(".coda-login__userfield");
+
+    var recent = getRecent();
+    if (recent) {
+      recentBtn.textContent = "Continue as " + (recent.first || recent.user);
+      recentBtn.hidden = false;
+      recentBtn.addEventListener("click", function () {
+        form.username.value = recent.user;
+        userField.hidden = true;
+        recentBtn.hidden = true;
+        switchBtn.hidden = false;
+        form.password.focus();
+      });
+      switchBtn.addEventListener("click", function () {
+        form.username.value = "";
+        userField.hidden = false;
+        recentBtn.hidden = false;
+        switchBtn.hidden = true;
+        form.username.focus();
+      });
+    }
 
     form.addEventListener("submit", async function (ev) {
       ev.preventDefault();
@@ -136,6 +189,7 @@
       if (ok) {
         showProgress(form, function () {
           try { sessionStorage.setItem(KEY, JSON.stringify({ user: acct.user, hash: acct.hash })); } catch (e) {}
+          rememberRecent(acct);
           showSite(acct);
         });
       } else {

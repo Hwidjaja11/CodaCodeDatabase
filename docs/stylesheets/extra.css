@@ -90,6 +90,22 @@ html:not(.coda-authed) .md-header {
 
 .coda-login__status { text-align: center; }
 
+.coda-login__card [hidden] { display: none !important; }
+
+.coda-login__card .coda-login__recent {
+    color: #1a73e8;
+    background: #e8f0fe;
+    border: 1px solid #c6dafc;
+}
+
+.coda-login__card .coda-login__switch {
+    padding: 2px;
+    font-size: 0.7rem;
+    color: #555;
+    background: transparent;
+    text-decoration: underline;
+}
+
 .coda-login__error { min-height: 1em; color: #c62828; font-size: 0.75rem; }
 
 #coda-signout {
