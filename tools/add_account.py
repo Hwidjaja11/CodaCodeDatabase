@@ -42,7 +42,7 @@ def make_hash(username, password, salt):
     # Must match the Web Crypto derivation in auth.js.
     return hashlib.pbkdf2_hmac(
         "sha256",
-        f"{username.lower()}:{password}".encode(),
+        f"{username}:{password}".encode(),
         salt.encode(),
         ITERATIONS,
     ).hex()
@@ -51,7 +51,7 @@ def make_hash(username, password, salt):
 def main():
     if len(sys.argv) < 2:
         sys.exit(__doc__)
-    username = sys.argv[1].strip().lower()
+    username = sys.argv[1].strip()
     accounts = [a for a in load() if a["user"] != username]
     if "--remove" in sys.argv:
         save(accounts)

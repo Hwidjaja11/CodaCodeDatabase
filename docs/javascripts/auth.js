@@ -14,7 +14,7 @@
   // Must match make_hash() in tools/add_account.py.
   async function derive(user, password, salt) {
     var enc = new TextEncoder();
-    var key = await crypto.subtle.importKey("raw", enc.encode(user.toLowerCase() + ":" + password), "PBKDF2", false, ["deriveBits"]);
+    var key = await crypto.subtle.importKey("raw", enc.encode(user + ":" + password), "PBKDF2", false, ["deriveBits"]);
     var bits = await crypto.subtle.deriveBits(
       { name: "PBKDF2", hash: "SHA-256", salt: enc.encode(salt), iterations: ITERATIONS }, key, 256);
     return hex(bits);
@@ -75,7 +75,7 @@
       ev.preventDefault();
       error.textContent = "";
       submit.disabled = true;
-      var user = form.username.value.trim().toLowerCase();
+      var user = form.username.value.trim();
       var pass = form.password.value;
       var acct = accounts.find(function (a) { return a.user === user; });
       var ok = false;
