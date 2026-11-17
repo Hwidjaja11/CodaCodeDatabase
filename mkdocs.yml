@@ -1,5 +1,5 @@
 site_name: CodaCodeDatabase
-site_url: https://hwidjaja11.github.io/CodaCodeDatabase
+site_url: https://hwidjaja11.github.io/CodaCodeDatabase/
 use_directory_urls: false
 theme:
   name: material
