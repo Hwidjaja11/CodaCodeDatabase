@@ -1,8 +1,8 @@
 ---
-title: Welcome to HarveyWiki!
+title: Welcome to CodaCode Database!
 ---
 Welcome!
 
-This is HarveyWiki, a Wiki created by the self-proclaimed polymathician Harvey Widjaja.
+This is CodaCode Database, a wiki created by the self-proclaimed polymathician Harvey Widjaja.
 
-Here you can find things he finds interesting, and about his self-made companies and friends.
+Here you can find details about CodaCode Game Dev Studios, its departments, and the friends who work there.

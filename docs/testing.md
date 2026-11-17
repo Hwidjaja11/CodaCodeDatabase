@@ -1,7 +1,7 @@
 ---
 title: Test Page
 ---
-This page is for testing features in HarveyWiki.
+This page is for testing features in CodaCode Database.
 
 Dialogs:
 
