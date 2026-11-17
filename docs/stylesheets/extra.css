@@ -75,15 +75,31 @@ html:not(.coda-authed) .md-header {
 }
 
 .coda-login__card button:disabled { opacity: 0.6; cursor: default; }
+.coda-login__bar {
+    height: 6px;
+    background: #e3e3e3;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.coda-login__fill {
+    width: 0;
+    height: 100%;
+    background: #1a73e8;
+}
+
+.coda-login__status { text-align: center; }
+
 .coda-login__error { min-height: 1em; color: #c62828; font-size: 0.75rem; }
 
 #coda-signout {
     margin-left: 8px;
-    padding: 4px 10px;
-    font-size: 0.8rem;
+    padding: 1px 6px;
+    font-size: 0.6rem;
+    line-height: 1.4;
     color: inherit;
     background: transparent;
     border: 1px solid currentColor;
-    border-radius: 4px;
+    border-radius: 3px;
     cursor: pointer;
 }
