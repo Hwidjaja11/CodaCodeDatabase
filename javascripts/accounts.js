@@ -2,8 +2,8 @@
 // Only salted hashes are stored here, never passwords.
 window.CODA_ACCOUNTS = [
   {
-    "user": "harveywidjaja",
-    "salt": "10e34b495cc63901557e716237a77da2",
-    "hash": "7691673b5297a8a75411e12537b70589768b7921303d86100fa9e685762db0fd"
+    "user": "HarveyWidjaja",
+    "salt": "f319a390195f5dc63aabe0f1b0e0cb2a",
+    "hash": "19c31d67d27f3d0e77f17c09a700793c90deca17197cf5aca6e892f1cb34efd1"
   }
 ];
