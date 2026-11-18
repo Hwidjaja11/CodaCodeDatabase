@@ -119,3 +119,106 @@ html:not(.coda-authed) .md-header {
     border-radius: 3px;
     cursor: pointer;
 }
+
+/* ---- Org chart ---- */
+.org-tree, .org-tree * {
+    font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important;
+}
+
+.org-tree {
+    --org-line: #9a9a9a;
+    --org-gap: 28px;
+    overflow-x: auto;
+    padding: 8px 0 16px;
+}
+
+.org-exec { display: flex; flex-direction: column; align-items: center; min-width: min-content; }
+
+.md-typeset .org-tree ul,
+.md-typeset .org-tree li { margin: 0 !important; padding: 0; list-style: none; }
+
+.org-box {
+    box-sizing: border-box;
+    width: 190px;
+    padding: 10px 12px;
+    text-align: center;
+    border: 2px solid var(--box, #888);
+    border-radius: 8px;
+    background: var(--fill, #f5f5f5);
+    color: #222;
+    font-size: 0.8rem;
+    line-height: 1.35;
+}
+
+.org-box h3 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 700; color: #222; }
+.org-box h4 {
+    margin: 8px 0 2px;
+    font-size: 0.72rem;
+    font-weight: 400;
+    text-decoration: underline;
+    letter-spacing: 0.02em;
+    color: #222;
+}
+.org-box .org-people li { margin: 0 0 3px; }
+
+.org-box--exec  { --box: #e0603a; --fill: #fde3d6; width: 230px; }
+.org-box--music { --box: #2f80d0; --fill: #dcebfb; }
+.org-box--art   { --box: #8e4fc9; --fill: #ece0f7; }
+.org-box--ideas { --box: #d9a400; --fill: #fff3c4; }
+.org-box--writing { --box: #2fa66a; --fill: #d9f2e4; }
+
+/* Connector lines between the executive box and the departments */
+.md-typeset .org-tree .org-depts {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    padding-top: var(--org-gap);
+}
+
+.org-depts::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: var(--org-gap);
+    border-left: 2px solid var(--org-line);
+}
+
+.md-typeset .org-tree .org-depts > li {
+    position: relative;
+    padding: var(--org-gap) 7px 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.org-depts > li::before,
+.org-depts > li::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 50%;
+    width: 50%;
+    height: var(--org-gap);
+    border-top: 2px solid var(--org-line);
+}
+
+.org-depts > li::after {
+    right: auto;
+    left: 50%;
+    border-left: 2px solid var(--org-line);
+}
+
+.org-depts > li:first-child::before,
+.org-depts > li:last-child::after { border: 0 none; }
+.org-depts > li:first-child::after { border-radius: 6px 0 0 0; }
+.org-depts > li:last-child::before { border-right: 2px solid var(--org-line); border-radius: 0 6px 0 0; }
+
+/* Narrow screens: stack the boxes and drop the connectors */
+@media (max-width: 900px) {
+    .org-exec { align-items: stretch; }
+    .org-box, .org-box--exec { width: 100%; }
+    .md-typeset .org-tree .org-depts { flex-direction: column; padding-top: 12px; gap: 12px; }
+    .org-depts::before, .org-depts > li::before, .org-depts > li::after { display: none; }
+    .md-typeset .org-tree .org-depts > li { padding: 0; }
+}
