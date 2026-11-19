@@ -1,5 +1,5 @@
 [
-  {"rank": 1, "name": "Harvey", "roles": ["Executive Producer", "Music Supervisor", "Lead Programmer", "CEO + Founder"], "departments": ["Programming", "Music", "Art"], "all": true},
+  {"rank": 1, "name": "Harvey", "roles": ["Executive Producer", "Music Supervisor", "Lead Programmer", "CEO + Founder"], "departments": ["Programming", "Music", "Art", "Writing"], "all": true},
   {"rank": 2, "name": "Maxie", "roles": ["Music Director", "Game Director", "Sound Composer"], "departments": ["Music", "Writing"], "all": true},
   {"rank": 3, "name": "Scarlett", "roles": ["Producer", "Art Director", "Lead Art"], "departments": ["Music", "Art", "Ideas"]},
   {"rank": 4, "name": "Claire", "roles": ["Deputy Game Director", "Game Design", "Lead Writer"], "departments": ["Writing", "Ideas", "Art"]},
