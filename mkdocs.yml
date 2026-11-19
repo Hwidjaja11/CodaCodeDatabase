@@ -32,3 +32,4 @@ extra_css:
 extra_javascript:
   - javascripts/accounts.js
   - javascripts/auth.js
+  - javascripts/directory.js

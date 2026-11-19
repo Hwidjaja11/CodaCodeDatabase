@@ -222,3 +222,69 @@ html:not(.coda-authed) .md-header {
     .org-depts::before, .org-depts > li::before, .org-depts > li::after { display: none; }
     .md-typeset .org-tree .org-depts > li { padding: 0; }
 }
+
+/* ---- Directory table ---- */
+.dir, .dir * { font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important; }
+
+.dir-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 6px; }
+.dir-controls input[type=search] { flex: 1 1 220px; min-width: 0; }
+.dir-controls input, .dir-controls select, .dir-controls button {
+    padding: 7px 10px;
+    font-size: 0.8rem;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    background: #fff;
+    color: #222;
+}
+.dir-controls button { cursor: pointer; }
+.dir-controls #dir-csv { color: #fff; background: #1a73e8; border-color: #1a73e8; }
+.dir-controls button:hover { filter: brightness(0.95); }
+
+.dir-count { margin: 4px 0 8px; font-size: 0.75rem; color: #555; }
+.dir-scroll { overflow-x: auto; }
+
+.md-typeset .dir-table { display: table; width: 100%; min-width: 560px; border-collapse: collapse; font-size: 0.8rem; }
+.md-typeset .dir-table th, .md-typeset .dir-table td {
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: top;
+    border: 0;
+    border-bottom: 1px solid #e3e3e3;
+}
+.md-typeset .dir-table thead th { background: #f3f4f6; border-bottom: 2px solid #ccc; padding: 0; }
+.dir-table th button {
+    width: 100%;
+    padding: 8px 10px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-align: left;
+    color: #222;
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+.dir-table th[aria-sort=ascending] button::after { content: " \25B2"; font-size: 0.65rem; }
+.dir-table th[aria-sort=descending] button::after { content: " \25BC"; font-size: 0.65rem; }
+.dir-table th[aria-sort=none] button::after { content: " \21C5"; font-size: 0.7rem; color: #999; }
+.dir-table tbody tr:hover { background: #f8fafe; }
+.dir-rank { width: 3rem; text-align: center !important; }
+.dir-name { font-weight: 700; }
+
+.dir-chip {
+    display: inline-block;
+    margin: 0 4px 4px 0;
+    padding: 1px 8px;
+    font-size: 0.72rem;
+    border: 1px solid var(--chip, #888);
+    border-radius: 10px;
+    background: var(--chipbg, #f5f5f5);
+}
+.dir-chip--music { --chip: #2f80d0; --chipbg: #dcebfb; }
+.dir-chip--art { --chip: #8e4fc9; --chipbg: #ece0f7; }
+.dir-chip--ideas { --chip: #d9a400; --chipbg: #fff3c4; }
+.dir-chip--writing { --chip: #2fa66a; --chipbg: #d9f2e4; }
+.dir-chip--programming { --chip: #555; --chipbg: #e8e8e8; }
+.dir-chip--all { --chip: #e0603a; --chipbg: #fde3d6; font-weight: 700; }
+
+.dir-empty { padding: 16px; text-align: center; color: #555; }
+.dir-note { margin-top: 12px; font-size: 0.72rem; color: #666; }
