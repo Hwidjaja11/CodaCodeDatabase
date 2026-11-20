@@ -21,5 +21,3 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Art Director (Art Department); Producer (Executive Department) |
 | Executive Level | 3 |
-
-[Back to the Directory](directory.md)

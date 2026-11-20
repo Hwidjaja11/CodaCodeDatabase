@@ -20,5 +20,3 @@ date: 2026-11-19
 | Department(s) | Ideas, Writing |
 | Specialties |  |
 | Executive Level | None |
-
-[Back to the Directory](directory.md)

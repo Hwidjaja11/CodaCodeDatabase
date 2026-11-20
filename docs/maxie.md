@@ -21,5 +21,3 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Music Director (Music Department); Game Director (Executive Department) |
 | Executive Level | 2 |
-
-[Back to the Directory](directory.md)

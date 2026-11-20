@@ -21,5 +21,3 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Lead Writer (Writing Department) |
 | Executive Level | 4 |
-
-[Back to the Directory](directory.md)

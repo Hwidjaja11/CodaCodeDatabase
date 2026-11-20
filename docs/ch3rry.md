@@ -22,5 +22,3 @@ This is an alias.
 | Department(s) | Art, Music |
 | Specialties |  |
 | Executive Level | None |
-
-[Back to the Directory](directory.md)
