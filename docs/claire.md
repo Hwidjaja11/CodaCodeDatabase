@@ -15,8 +15,10 @@ date: 2026-11-19
 
 |  |  |
 | ----------------- | ----------------------------------------- |
+| Status |  |
 | Roles | Deputy Game Director, Game Design, Lead Writer |
 | Department(s) | Writing, Ideas, Art |
+| Specialties |  |
 | Leads | Lead Writer (Writing Department) |
 | Executive Level | 4 |
 

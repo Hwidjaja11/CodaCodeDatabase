@@ -15,6 +15,20 @@ theme:
     - toc.integrate
     - navigation.footer
 
+nav:
+  - index.md
+  - directory.md
+  - org-chart.md
+  - People:
+    - harvey.md
+    - maxie.md
+    - scarlett.md
+    - claire.md
+    - ch3rry.md
+    - amelia.md
+    - sabrina.md
+    - shay.md
+
 markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences

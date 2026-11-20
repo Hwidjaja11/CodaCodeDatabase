@@ -288,3 +288,10 @@ html:not(.coda-authed) .md-header {
 
 .dir-empty { padding: 16px; text-align: center; color: #555; }
 .dir-note { margin-top: 12px; font-size: 0.72rem; color: #666; }
+
+/* ---- Sidebar divider above the People section ---- */
+.md-nav--primary > .md-nav__list > .md-nav__item--section {
+    margin-top: 0.8rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid #d0d0d0;
+}

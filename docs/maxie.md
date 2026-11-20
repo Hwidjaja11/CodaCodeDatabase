@@ -15,8 +15,10 @@ date: 2026-11-19
 
 |  |  |
 | ----------------- | ----------------------------------------- |
+| Status |  |
 | Roles | Music Director, Game Director, Sound Composer |
 | Department(s) | Executive Department, Music, Writing (All) |
+| Specialties |  |
 | Leads | Music Director (Music Department); Game Director (Executive Department) |
 | Executive Level | 2 |
 

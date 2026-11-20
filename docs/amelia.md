@@ -15,8 +15,10 @@ date: 2026-11-19
 
 |  |  |
 | ----------------- | ----------------------------------------- |
+| Status |  |
 | Roles | Ideas, Sound Designer, Lead Writer |
 | Department(s) | Art, Ideas, Music, Writing |
+| Specialties |  |
 | Leads | Lead Writer (Writing Department) |
 | Executive Level | None |
 

@@ -15,8 +15,10 @@ date: 2026-11-19
 
 |  |  |
 | ----------------- | ----------------------------------------- |
+| Status |  |
 | Roles | Ideas, Technical Design, UI, Lore |
 | Department(s) | Ideas, Writing |
+| Specialties |  |
 | Executive Level | None |
 
 [Back to the Directory](directory.md)

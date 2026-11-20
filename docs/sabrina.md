@@ -15,8 +15,10 @@ date: 2026-11-19
 
 |  |  |
 | ----------------- | ----------------------------------------- |
+| Status |  |
 | Roles | Ideas, Art, UI, Level Design |
 | Department(s) | Art, Ideas |
+| Specialties |  |
 | Executive Level | None |
 
 [Back to the Directory](directory.md)
