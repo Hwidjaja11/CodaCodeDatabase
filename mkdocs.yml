@@ -19,6 +19,7 @@ nav:
   - index.md
   - directory.md
   - org-chart.md
+  - barcode.md
   - People:
     - harvey.md
     - maxie.md
@@ -47,3 +48,4 @@ extra_javascript:
   - javascripts/accounts.js
   - javascripts/auth.js
   - javascripts/directory.js
+  - javascripts/barcode.js

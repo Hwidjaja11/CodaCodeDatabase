@@ -1,0 +1,33 @@
+{
+  "_notes": "Used by the barcode numbers. Role number = position in 'roles' (starting at 1). Only ever ADD roles at the end so old barcodes keep their meaning. Department value = bit flag.",
+  "departments": {
+    "Music": 1,
+    "Art": 2,
+    "Ideas": 4,
+    "Writing": 8,
+    "Programming": 16
+  },
+  "roles": [
+    "Executive Producer",
+    "Music Supervisor",
+    "Lead Programmer",
+    "CEO + Founder",
+    "Music Director",
+    "Game Director",
+    "Sound Composer",
+    "Producer",
+    "Art Director",
+    "Lead Art",
+    "Deputy Game Director",
+    "Game Design",
+    "Lead Writer",
+    "Level Design",
+    "General Design",
+    "Ideas",
+    "Sound Designer",
+    "Art",
+    "UI",
+    "Technical Design",
+    "Lore"
+  ]
+}

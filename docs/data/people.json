@@ -1,10 +1,10 @@
 [
-  {"rank": 1, "name": "Harvey", "roles": ["Executive Producer", "Music Supervisor", "Lead Programmer", "CEO + Founder"], "departments": ["Programming", "Music", "Art", "Writing"], "all": true},
-  {"rank": 2, "name": "Maxie", "roles": ["Music Director", "Game Director", "Sound Composer"], "departments": ["Music", "Writing"], "all": true},
-  {"rank": 3, "name": "Scarlett", "roles": ["Producer", "Art Director", "Lead Art"], "departments": ["Music", "Art", "Ideas"]},
-  {"rank": 4, "name": "Claire", "roles": ["Deputy Game Director", "Game Design", "Lead Writer"], "departments": ["Writing", "Ideas", "Art"]},
-  {"rank": null, "name": "Ch3rry (Alias)", "roles": ["Level Design", "General Design"], "departments": ["Art", "Music"]},
-  {"rank": null, "name": "Amelia", "roles": ["Ideas", "Sound Designer", "Lead Writer"], "departments": ["Art", "Ideas", "Music", "Writing"]},
-  {"rank": null, "name": "Sabrina", "roles": ["Ideas", "Art", "UI", "Level Design"], "departments": ["Art", "Ideas"]},
-  {"rank": null, "name": "Shay", "roles": ["Ideas", "Technical Design", "UI", "Lore"], "departments": ["Ideas", "Writing"]}
+  {"rank": 1, "name": "Harvey", "roles": ["Executive Producer", "Music Supervisor", "Lead Programmer", "CEO + Founder"], "departments": ["Programming", "Music", "Art", "Writing"], "all": true, "num": 1, "page": "harvey"},
+  {"rank": 2, "name": "Maxie", "roles": ["Music Director", "Game Director", "Sound Composer"], "departments": ["Music", "Writing"], "all": true, "num": 2, "page": "maxie"},
+  {"rank": 3, "name": "Scarlett", "roles": ["Producer", "Art Director", "Lead Art"], "departments": ["Music", "Art", "Ideas"], "num": 3, "page": "scarlett"},
+  {"rank": 4, "name": "Claire", "roles": ["Deputy Game Director", "Game Design", "Lead Writer"], "departments": ["Writing", "Ideas", "Art"], "num": 4, "page": "claire"},
+  {"rank": null, "name": "Ch3rry (Alias)", "roles": ["Level Design", "General Design"], "departments": ["Art", "Music"], "num": 5, "page": "ch3rry"},
+  {"rank": null, "name": "Amelia", "roles": ["Ideas", "Sound Designer", "Lead Writer"], "departments": ["Art", "Ideas", "Music", "Writing"], "num": 6, "page": "amelia"},
+  {"rank": null, "name": "Sabrina", "roles": ["Ideas", "Art", "UI", "Level Design"], "departments": ["Art", "Ideas"], "num": 7, "page": "sabrina"},
+  {"rank": null, "name": "Shay", "roles": ["Ideas", "Technical Design", "UI", "Lore"], "departments": ["Ideas", "Writing"], "num": 8, "page": "shay"}
 ]

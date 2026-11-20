@@ -295,3 +295,39 @@ html:not(.coda-authed) .md-header {
     padding-top: 0.6rem;
     border-top: 1px solid #d0d0d0;
 }
+
+/* ---- Barcode lookup ---- */
+.bc, .bc * { font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important; }
+.bc-form { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+.bc-input {
+    flex: 1 1 300px; min-width: 0;
+    padding: 10px 12px; font-size: 1.05rem; letter-spacing: 0.12em;
+    border: 1px solid #bbb; border-radius: 4px; background: #fff; color: #222;
+}
+.bc-form button {
+    padding: 8px 16px; font-size: 0.85rem; color: #222; background: #fff;
+    border: 1px solid #bbb; border-radius: 4px; cursor: pointer;
+}
+.bc-form button[type=submit] { color: #fff; background: #1a73e8; border-color: #1a73e8; }
+.bc-msg { min-height: 1.4em; margin: 6px 0 0; font-size: 0.8rem; color: #555; }
+.bc-msg--warn { color: #b26a00; }
+.bc-card {
+    display: flex; max-width: 640px; margin-top: 12px; overflow: hidden;
+    border: 1px solid #e3e3e3; border-radius: 14px; background: #fff;
+}
+.bc-stripe { width: 16px; flex: none; display: flex; flex-direction: column; }
+.bc-stripe i { flex: 1; }
+.bc-stripe--music { background: #8cc0f2; }
+.bc-stripe--art { background: #c7a6ee; }
+.bc-stripe--ideas { background: #f8d986; }
+.bc-stripe--writing { background: #90ddb6; }
+.bc-stripe--programming { background: #aab9cd; }
+.bc-body { padding: 14px 20px 16px; }
+.md-typeset .bc-name { margin: 0; font-size: 1.9rem; color: #1d1d1d; }
+.bc-alias { font-size: 0.85rem; font-style: italic; color: #777; }
+.bc-row { display: flex; gap: 12px; margin-top: 8px; font-size: 0.85rem; align-items: baseline; }
+.bc-label { flex: none; width: 9.5em; color: #777; }
+.bc-value { color: #222; }
+.bc-link { display: inline-block; margin-top: 14px; font-size: 0.9rem; font-weight: 700; }
+.bc-note { margin-top: 14px; font-size: 0.72rem; color: #666; }
+@media (max-width: 560px) { .bc-row { flex-direction: column; gap: 0; } .bc-label { width: auto; } }
