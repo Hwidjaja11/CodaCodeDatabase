@@ -331,3 +331,15 @@ html:not(.coda-authed) .md-header {
 .bc-link { display: inline-block; margin-top: 14px; font-size: 0.9rem; font-weight: 700; }
 .bc-note { margin-top: 14px; font-size: 0.72rem; color: #666; }
 @media (max-width: 560px) { .bc-row { flex-direction: column; gap: 0; } .bc-label { width: auto; } }
+
+/* Barcode lookup: errors in red */
+.bc-msg--error { color: #c62828; }
+
+/* Login: switch between username and barcode sign-in */
+.coda-login__card .coda-login__mode {
+    padding: 2px;
+    font-size: 0.72rem;
+    color: #1a73e8;
+    background: transparent;
+    text-decoration: underline;
+}

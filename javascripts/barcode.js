@@ -9,28 +9,10 @@
   var result = document.getElementById("bc-result");
   var people = [], codes = null;
 
-  function dataUrl(file) {
-    var scripts = document.getElementsByTagName("script");
-    for (var i = 0; i < scripts.length; i++) {
-      if (/javascripts\/barcode\.js/.test(scripts[i].src)) return new URL("../data/" + file, scripts[i].src).href;
-    }
-    return "data/" + file;
-  }
-  function pad(n, w) { n = String(n); while (n.length < w) n = "0" + n; return n; }
-  function mod97(digits) { var r = 0; for (var i = 0; i < digits.length; i++) r = (r * 10 + Number(digits[i])) % 97; return r; }
-  function grouped(n) { return n.replace(/(\d{4})(?=\d)/g, "$1 "); }
-
-  // Same rules as barcode_number() in tools/barcode_numbers.py
-  function codeFor(p) {
-    var mask = 0;
-    p.departments.forEach(function (d) { mask += codes.departments[d] || 0; });
-    var s = pad(p.num, 2) + (p.rank || 0) + pad(mask, 2) + (p.all ? 1 : 0);
-    for (var i = 0; i < 4; i++) {
-      var r = p.roles[i];
-      s += pad(r ? codes.roles.indexOf(r) + 1 : 0, 2);
-    }
-    return s + pad(mod97(s), 2);
-  }
+  var CB = window.CodaBarcode;
+  function mod97(d) { return CB.mod97(d); }
+  function grouped(n) { return CB.grouped(n); }
+  function codeFor(p) { return CB.codeFor(p, codes); }
 
   function el(tag, cls, txt) {
     var e = document.createElement(tag);
@@ -79,14 +61,15 @@
 
   function problem(text) {
     result.textContent = "";
-    msg.className = "bc-msg";
+    msg.className = "bc-msg" + (text ? " bc-msg--error" : "");
     msg.textContent = text;
   }
 
+  // Runs only when Look up is clicked or Enter is pressed (never while typing).
   function lookup() {
     var digits = input.value.replace(/\D/g, "");
-    if (!digits) { problem(""); return; }
-    if (digits.length < 16) { problem(digits.length + " of 16 digits entered..."); return; }
+    if (!digits) { problem("Type the 16-digit barcode number first."); return; }
+    if (digits.length < 16) { problem("That's only " + digits.length + " digits. A barcode number has 16."); return; }
     if (digits.length > 16) { problem("That's more than 16 digits. Check the number under the barcode."); return; }
     if (!codes) { problem("Still loading, try again in a second."); return; }
     if (mod97(digits.slice(0, 14)) !== Number(digits.slice(14))) {
@@ -95,21 +78,22 @@
     }
     var num = Number(digits.slice(0, 2));
     var p = people.filter(function (x) { return x.num === num; })[0];
-    if (!p) { problem("No one in the database is linked to that barcode."); return; }
+    if (!p) { problem("No matching barcode: no one in the database is linked to that number."); return; }
     show(p, codeFor(p) === digits, digits);
   }
 
   document.getElementById("bc-form").addEventListener("submit", function (e) { e.preventDefault(); lookup(); });
-  input.addEventListener("input", lookup);
-  document.getElementById("bc-clear").addEventListener("click", function () { input.value = ""; problem(""); input.focus(); });
+  // Editing the number hides any earlier result until you look it up again.
+  input.addEventListener("input", function () { result.textContent = ""; msg.textContent = ""; msg.className = "bc-msg"; });
+  document.getElementById("bc-clear").addEventListener("click", function () {
+    input.value = ""; result.textContent = ""; msg.textContent = ""; msg.className = "bc-msg"; input.focus();
+  });
 
-  Promise.all([fetch(dataUrl("people.json")).then(function (r) { return r.json(); }),
-               fetch(dataUrl("codes.json")).then(function (r) { return r.json(); })])
+  CB.load()
     .then(function (r) {
-      people = r[0]; codes = r[1];
+      people = r.people; codes = r.codes;
       var hash = decodeURIComponent((location.hash || "").slice(1));
-      if (hash) { input.value = hash; }
-      lookup();
+      if (hash) { input.value = hash; lookup(); }   // a link with the number in it is a deliberate look-up
     })
     .catch(function () { problem("Could not load the database."); });
 })();
