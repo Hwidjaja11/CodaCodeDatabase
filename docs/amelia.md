@@ -21,3 +21,4 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Lead Writer (Writing Department) |
 | Executive Level | None |
+| Barcode Number | <a class="barcode-number" data-page="amelia" href="barcode.html#0601501617130076">0601 5016 1713 0076</a> |

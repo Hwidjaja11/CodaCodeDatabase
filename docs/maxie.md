@@ -21,3 +21,4 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Music Director (Music Department); Game Director (Executive Department) |
 | Executive Level | 2 |
+| Barcode Number | <a class="barcode-number" data-page="maxie" href="barcode.html#0220910506070028">0220 9105 0607 0028</a> |

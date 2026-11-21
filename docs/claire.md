@@ -21,3 +21,4 @@ date: 2026-11-19
 | Specialties |  |
 | Leads | Lead Writer (Writing Department) |
 | Executive Level | 4 |
+| Barcode Number | <a class="barcode-number" data-page="claire" href="barcode.html#0441401112130073">0441 4011 1213 0073</a> |

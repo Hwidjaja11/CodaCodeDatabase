@@ -46,6 +46,7 @@ extra_css:
 
 extra_javascript:
   - javascripts/accounts.js
+  - javascripts/barcode-core.js
   - javascripts/auth.js
   - javascripts/directory.js
   - javascripts/barcode.js

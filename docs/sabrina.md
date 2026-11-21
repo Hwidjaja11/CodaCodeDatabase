@@ -20,3 +20,4 @@ date: 2026-11-19
 | Department(s) | Art, Ideas |
 | Specialties |  |
 | Executive Level | None |
+| Barcode Number | <a class="barcode-number" data-page="sabrina" href="barcode.html#0700601618191455">0700 6016 1819 1455</a> |
