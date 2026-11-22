@@ -1,0 +1,27 @@
+{
+  "_notes": "Drives the Org Chart (docs/org-chart.md). Who is IN each department comes from people.json automatically. Only leaders and the Executive box are listed here. Departments appear in the chart in the order below; a department that isn't listed here is left off the chart.",
+  "executive": {
+    "title": "Executive Department",
+    "members": [
+      {"person": "Harvey", "role": "Executive Producer", "note": "CEO + Founder"},
+      {"person": "Maxie", "role": "Game Director"},
+      {"person": "Scarlett", "role": "Producer"}
+    ]
+  },
+  "departments": [
+    {"name": "Music", "leaders": [
+      {"person": "Maxie", "title": "Music Director"},
+      {"person": "Harvey", "title": "Music Supervisor"}
+    ]},
+    {"name": "Art", "leaders": [
+      {"person": "Scarlett", "title": "Art Director"}
+    ]},
+    {"name": "Ideas", "leaders": []},
+    {"name": "Writing", "leaders": [
+      {"person": "Claire", "title": "Lead Writer"},
+      {"person": "Amelia", "title": "Lead Writer"},
+      {"person": "Harvey", "title": "Writing Supervisor"}
+    ]},
+    {"name": "QA", "leaders": []}
+  ]
+}

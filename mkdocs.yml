@@ -15,6 +15,9 @@ theme:
     - toc.integrate
     - navigation.footer
 
+hooks:
+  - hooks/org_chart.py
+
 nav:
   - index.md
   - directory.md
