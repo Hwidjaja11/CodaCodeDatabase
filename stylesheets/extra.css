@@ -166,6 +166,7 @@ html:not(.coda-authed) .md-header {
 .org-box--art   { --box: #8e4fc9; --fill: #ece0f7; }
 .org-box--ideas { --box: #d9a400; --fill: #fff3c4; }
 .org-box--writing { --box: #2fa66a; --fill: #d9f2e4; }
+.org-box--qa { --box: #d6558a; --fill: #fde0ec; }
 
 /* Connector lines between the executive box and the departments */
 .md-typeset .org-tree .org-depts {
@@ -347,3 +348,6 @@ html:not(.coda-authed) .md-header {
 /* QA department colour (pink) */
 .dir-chip--qa { --chip: #d6558a; --chipbg: #fde0ec; }
 .bc-stripe--qa { background: #f5a9c9; }
+
+/* Department boxes get narrower when there are more of them (width set by the chart builder) */
+.org-depts .org-box { width: var(--org-w, 190px); }
