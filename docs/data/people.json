@@ -6,5 +6,6 @@
   {"rank": null, "name": "Ch3rry (Alias)", "roles": ["Level Design", "General Design"], "departments": ["Art", "Music"], "num": 5, "page": "ch3rry"},
   {"rank": null, "name": "Amelia", "roles": ["Ideas", "Sound Designer", "Lead Writer"], "departments": ["Art", "Ideas", "Music", "Writing"], "num": 6, "page": "amelia"},
   {"rank": null, "name": "Sabrina", "roles": ["Ideas", "Art", "UI", "Level Design"], "departments": ["Art", "Ideas"], "num": 7, "page": "sabrina"},
-  {"rank": null, "name": "Shay", "roles": ["Ideas", "Technical Design", "UI", "Lore"], "departments": ["Ideas", "Writing"], "num": 8, "page": "shay"}
+  {"rank": null, "name": "Shay", "roles": ["Ideas", "Technical Design", "UI", "Lore"], "departments": ["Ideas", "Writing"], "num": 8, "page": "shay"},
+  {"rank": null, "name": "Rhyse", "roles": ["Bug Tester", "General Tester", "QA Helper"], "departments": ["Ideas", "QA"], "num": 9, "page": "rhyse"}
 ]

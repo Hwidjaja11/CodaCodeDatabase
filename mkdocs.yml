@@ -29,6 +29,7 @@ nav:
     - amelia.md
     - sabrina.md
     - shay.md
+    - rhyse.md
 
 markdown_extensions:
   - pymdownx.details
