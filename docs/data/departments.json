@@ -1,27 +1,75 @@
 {
-  "_notes": "Drives the Org Chart (docs/org-chart.md). Who is IN each department comes from people.json automatically. Only leaders and the Executive box are listed here. Departments appear in the chart in the order below; a department that isn't listed here is left off the chart.",
+  "_notes": "Drives the Org Chart (docs/org-chart.md). Who is IN each department comes from people.json automatically. Only leaders and the Executive box are listed here. Departments appear in the chart in the order below; a department that isn't listed here is left off the chart. Each department's description is shown on its page in the Departments section (docs/departments/).",
   "executive": {
     "title": "Executive Department",
     "members": [
-      {"person": "Harvey", "role": "Executive Producer", "note": "CEO + Founder"},
-      {"person": "Maxie", "role": "Game Director"},
-      {"person": "Scarlett", "role": "Producer"}
+      {
+        "person": "Harvey",
+        "role": "Executive Producer",
+        "note": "CEO + Founder"
+      },
+      {
+        "person": "Maxie",
+        "role": "Game Director"
+      },
+      {
+        "person": "Scarlett",
+        "role": "Producer"
+      }
     ]
   },
   "departments": [
-    {"name": "Music", "leaders": [
-      {"person": "Maxie", "title": "Music Director"},
-      {"person": "Harvey", "title": "Music Supervisor"}
-    ]},
-    {"name": "Art", "leaders": [
-      {"person": "Scarlett", "title": "Art Director"}
-    ]},
-    {"name": "Ideas", "leaders": []},
-    {"name": "Writing", "leaders": [
-      {"person": "Claire", "title": "Lead Writer"},
-      {"person": "Amelia", "title": "Lead Writer"},
-      {"person": "Harvey", "title": "Writing Supervisor"}
-    ]},
-    {"name": "QA", "leaders": []}
+    {
+      "name": "Music",
+      "leaders": [
+        {
+          "person": "Maxie",
+          "title": "Music Director"
+        },
+        {
+          "person": "Harvey",
+          "title": "Music Supervisor"
+        }
+      ],
+      "description": "Composes and directs the music and sound of CodaCode's games, from themes to sound effects."
+    },
+    {
+      "name": "Art",
+      "leaders": [
+        {
+          "person": "Scarlett",
+          "title": "Art Director"
+        }
+      ],
+      "description": "Creates the look of the games: characters, environments, interface art and overall art direction."
+    },
+    {
+      "name": "Ideas",
+      "leaders": [],
+      "description": "Where concepts begin. Brainstorms game ideas, mechanics, worlds and features for the studio to pursue."
+    },
+    {
+      "name": "Writing",
+      "leaders": [
+        {
+          "person": "Claire",
+          "title": "Lead Writer"
+        },
+        {
+          "person": "Amelia",
+          "title": "Lead Writer"
+        },
+        {
+          "person": "Harvey",
+          "title": "Writing Supervisor"
+        }
+      ],
+      "description": "Writes the stories, dialogue and lore, and keeps the narrative consistent across projects."
+    },
+    {
+      "name": "QA",
+      "leaders": [],
+      "description": "Quality Assurance. Tests the games, finds and reports bugs, and checks that everything works before release."
+    }
   ]
 }

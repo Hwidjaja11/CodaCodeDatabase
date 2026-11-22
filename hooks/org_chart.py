@@ -75,7 +75,46 @@ def build(docs_dir):
             "\n</ul>\n</div>\n</div>")
 
 
+def _link(person):
+    page = person.get("page")
+    return f"[{person['name']}](../{page}.md)" if page else person["name"]
+
+
+def build_department_page(docs_dir, dept):
+    people = _load(docs_dir, "people.json")
+    cfg = _load(docs_dir, "departments.json")
+    d = next(x for x in cfg["departments"] if x["name"] == dept)
+    by_short = {SHORT(p["name"]): p for p in people}
+    leaders = d.get("leaders", [])
+    leader_names = {ld["person"] for ld in leaders}
+    out = [d.get("description", ""), "", "## Leaders", ""]
+    if leaders:
+        seen = set()
+        for ld in leaders:
+            p = by_short.get(ld["person"])
+            out.append(f"- {_link(p) if p else ld['person']} \u2013 {ld['title']}")
+    else:
+        out.append("N/A")
+    members = [p for p in people if dept in p["departments"] and SHORT(p["name"]) not in leader_names]
+    out += ["", "## Members", ""]
+    out += [f"- {_link(p)}" for p in members] or ["N/A"]
+    return "\n".join(out)
+
+
+def build_overview(docs_dir):
+    cfg = _load(docs_dir, "departments.json")
+    out = ["## The departments", ""]
+    for d in cfg["departments"]:
+        out.append(f"- **[{d['name']}]({d['name'].lower()}.md)** \u2013 {d.get('description', '')}")
+    return "\n".join(out)
+
+
 def on_page_markdown(markdown, page, config, files, **kwargs):
-    if MARKER not in markdown:
-        return markdown
-    return markdown.replace(MARKER, build(config["docs_dir"]))
+    docs_dir = config["docs_dir"]
+    if "<!-- department -->" in markdown:
+        markdown = markdown.replace("<!-- department -->", build_department_page(docs_dir, page.meta["department"]))
+    if "<!-- departments-overview -->" in markdown:
+        markdown = markdown.replace("<!-- departments-overview -->", build_overview(docs_dir))
+    if MARKER in markdown:
+        markdown = markdown.replace(MARKER, build(docs_dir))
+    return markdown

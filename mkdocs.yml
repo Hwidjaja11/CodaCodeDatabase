@@ -23,6 +23,13 @@ nav:
   - directory.md
   - org-chart.md
   - barcode.md
+  - Departments:
+    - departments/index.md
+    - departments/music.md
+    - departments/art.md
+    - departments/ideas.md
+    - departments/writing.md
+    - departments/qa.md
   - People:
     - harvey.md
     - maxie.md
