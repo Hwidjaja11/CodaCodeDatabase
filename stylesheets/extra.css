@@ -343,3 +343,7 @@ html:not(.coda-authed) .md-header {
     background: transparent;
     text-decoration: underline;
 }
+
+/* QA department colour (pink) */
+.dir-chip--qa { --chip: #d6558a; --chipbg: #fde0ec; }
+.bc-stripe--qa { background: #f5a9c9; }

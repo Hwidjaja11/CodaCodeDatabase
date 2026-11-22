@@ -5,7 +5,8 @@
     "Art": 2,
     "Ideas": 4,
     "Writing": 8,
-    "Programming": 16
+    "Programming": 16,
+    "QA": 32
   },
   "roles": [
     "Executive Producer",
@@ -29,6 +30,9 @@
     "UI",
     "Technical Design",
     "Lore",
-    "Writing Supervisor"
+    "Writing Supervisor",
+    "Bug Tester",
+    "General Tester",
+    "QA Helper"
   ]
 }
