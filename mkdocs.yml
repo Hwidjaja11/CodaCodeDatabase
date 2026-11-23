@@ -40,6 +40,8 @@ nav:
     - sabrina.md
     - shay.md
     - rhyse.md
+  - Fun:
+    - quiz.md
 
 markdown_extensions:
   - pymdownx.details
@@ -57,7 +59,9 @@ extra_css:
 
 extra_javascript:
   - javascripts/accounts.js
+  - javascripts/settings.js
   - javascripts/barcode-core.js
   - javascripts/auth.js
   - javascripts/directory.js
   - javascripts/barcode.js
+  - javascripts/quiz.js

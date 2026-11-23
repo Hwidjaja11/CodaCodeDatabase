@@ -85,6 +85,7 @@
     btn.textContent = "Sign out (" + (acct.first || acct.user) + ")";
     btn.addEventListener("click", signOut);
     header.appendChild(btn);
+    if (window.CodaSettings) window.CodaSettings.mount(header);
   }
 
   function showSite(acct) {
