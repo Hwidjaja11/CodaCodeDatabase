@@ -497,3 +497,10 @@ html:not(.coda-authed) .md-header {
 [data-md-color-scheme="slate"] .hm-key--miss { background: #4a2020; border-color: #ff7b7b; }
 [data-md-color-scheme="slate"] .hm-man { stroke: #ff7b7b; }
 [data-md-color-scheme="slate"] .hm-letter--missed { color: #ff7b7b; }
+
+/* Hangman category tabs */
+.hm-cats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.hm-cat { padding: 4px 12px; font-size: 0.85rem; cursor: pointer; color: #222; background: #fff; border: 1px solid #bbb; border-radius: 14px; }
+.hm-cat--on { color: #fff; background: #1a73e8; border-color: #1a73e8; }
+[data-md-color-scheme="slate"] .hm-cat { color: #e6e6e6; background: #23272e; border-color: #4a505a; }
+[data-md-color-scheme="slate"] .hm-cat--on { color: #fff; background: #1a73e8; border-color: #1a73e8; }
