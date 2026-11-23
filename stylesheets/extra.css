@@ -526,3 +526,11 @@ html:not(.coda-authed) .md-header {
 .rs-meta { padding-top: 8px; }
 .rs-name { font-size: 1.05rem; font-weight: 700; color: #222; }
 .rs-date { font-size: 0.78rem; color: #666; }
+
+/* Small, clean back link on the hidden Easter egg pages */
+.md-typeset a.egg-back {
+    display: inline-block; padding: 3px 12px; font-size: 0.72rem; line-height: 1.5;
+    color: inherit; border: 1px solid currentColor; border-radius: 14px; opacity: 0.8;
+    text-decoration: none; transition: opacity .15s, background .15s;
+}
+.md-typeset a.egg-back:hover { opacity: 1; background: rgba(128, 128, 128, 0.12); }
