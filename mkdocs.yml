@@ -66,6 +66,7 @@ extra_javascript:
   - javascripts/auth.js
   - javascripts/directory.js
   - javascripts/barcode.js
+  - javascripts/fun-data.js
   - javascripts/quiz.js
   - javascripts/hangman.js
   - javascripts/truths.js

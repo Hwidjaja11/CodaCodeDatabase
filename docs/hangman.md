@@ -1,8 +1,8 @@
 ---
-title: Role Hangman
+title: Hangman
 ---
-# Role Hangman
+# Hangman
 
-Guess the CodaCode role one letter at a time. You get a hint (a department someone with that role works in) and six wrong guesses. Click the letters or use your keyboard.
+Guess the word one letter at a time. Pick a category: **Roles**, **Departments**, **People**, or **Mixed**. You get a hint and six wrong guesses. Click the letters or use your keyboard. Your wins and streak are saved in this browser.
 
 <div id="hangman" class="hangman"><noscript>This game needs JavaScript.</noscript></div>
