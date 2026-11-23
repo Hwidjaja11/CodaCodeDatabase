@@ -323,6 +323,7 @@ html:not(.coda-authed) .md-header {
 .bc-stripe--ideas { background: #f8d986; }
 .bc-stripe--writing { background: #90ddb6; }
 .bc-stripe--programming { background: #aab9cd; }
+.bc-stripe--all { background: #f2a48c; }
 .bc-body { padding: 14px 20px 16px; }
 .md-typeset .bc-name { margin: 0; font-size: 1.9rem; color: #1d1d1d; }
 .bc-alias { font-size: 0.85rem; font-style: italic; color: #777; }
