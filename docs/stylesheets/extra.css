@@ -471,3 +471,32 @@ html:not(.coda-authed) .md-header {
 
 /* Logo has a white background, so round it off in dark mode */
 [data-md-color-scheme="slate"] .md-header__button.md-logo img { border-radius: 8px; }
+
+/* ---- Role Hangman ---- */
+.hangman, .hangman * { font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important; }
+.hangman { max-width: 640px; margin-top: 12px; }
+.hm-top { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+.hm-pic { flex: none; width: 170px; }
+.hm-svg { width: 100%; height: auto; fill: none; stroke-width: 4; stroke-linecap: round; }
+.hm-frame { stroke: #888; }
+.hm-man { stroke: #c62828; }
+.hm-side { flex: 1 1 260px; min-width: 0; }
+.hm-word { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+.hm-letter { min-width: 1.4em; padding-bottom: 2px; text-align: center; font-size: 1.6rem; font-weight: 700; border-bottom: 3px solid currentColor; }
+.hm-letter--gap { border-bottom-color: transparent; min-width: 0.8em; }
+.hm-letter--missed { color: #c62828; }
+.hm-keys { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+.hm-key {
+    width: 2.3em; height: 2.3em; font-size: 0.95rem; cursor: pointer;
+    color: #222; background: #fff; border: 1px solid #bbb; border-radius: 6px;
+}
+.hm-key:hover:not(:disabled) { border-color: #1a73e8; background: #f0f6ff; }
+.hm-key:disabled { cursor: default; }
+.hm-key--hit { background: #d9f2e4; border-color: #2fa66a; }
+.hm-key--miss { background: #fde0e0; border-color: #c62828; opacity: 0.6; }
+[data-md-color-scheme="slate"] .hm-key { color: #e6e6e6; background: #23272e; border-color: #4a505a; }
+[data-md-color-scheme="slate"] .hm-key:hover:not(:disabled) { background: #1f2c44; border-color: #7ab0ff; }
+[data-md-color-scheme="slate"] .hm-key--hit { background: #1b4030; border-color: #3fbf82; }
+[data-md-color-scheme="slate"] .hm-key--miss { background: #4a2020; border-color: #ff7b7b; }
+[data-md-color-scheme="slate"] .hm-man { stroke: #ff7b7b; }
+[data-md-color-scheme="slate"] .hm-letter--missed { color: #ff7b7b; }

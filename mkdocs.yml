@@ -42,6 +42,8 @@ nav:
     - rhyse.md
   - Fun:
     - quiz.md
+    - hangman.md
+    - two-truths.md
 
 markdown_extensions:
   - pymdownx.details
@@ -65,3 +67,5 @@ extra_javascript:
   - javascripts/directory.js
   - javascripts/barcode.js
   - javascripts/quiz.js
+  - javascripts/hangman.js
+  - javascripts/truths.js
