@@ -73,3 +73,4 @@ extra_javascript:
   - javascripts/hangman.js
   - javascripts/truths.js
   - javascripts/restricted.js
+  - javascripts/easter.js
