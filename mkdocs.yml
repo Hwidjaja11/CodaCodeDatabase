@@ -44,6 +44,8 @@ nav:
     - quiz.md
     - hangman.md
     - two-truths.md
+  - RESTRICTED:
+    - restricted.md
 
 markdown_extensions:
   - pymdownx.details
@@ -70,3 +72,4 @@ extra_javascript:
   - javascripts/quiz.js
   - javascripts/hangman.js
   - javascripts/truths.js
+  - javascripts/restricted.js

@@ -1,0 +1,79 @@
+{
+  "kdf": "PBKDF2-SHA256",
+  "iterations": 250000,
+  "salt": "223a19aae06d420f44c9af0e0bb85629",
+  "cards": [
+    {
+      "name": "Harvey",
+      "download": "CodaCode-Card-01-Harvey.png",
+      "file": "cards/codacode-card-01-harvey.enc",
+      "sha256": "8619db3f41abf41bc3ffddd8abecb8d730770caf8f5fa6cb248ce8db1ea92738",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Maxie",
+      "download": "CodaCode-Card-02-Maxie.png",
+      "file": "cards/codacode-card-02-maxie.enc",
+      "sha256": "6ff4be410e22427a1c3bdb45c26886c305413845c9267d63d524f8c52eb24343",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Scarlett",
+      "download": "CodaCode-Card-03-Scarlett.png",
+      "file": "cards/codacode-card-03-scarlett.enc",
+      "sha256": "cda8a989ded08c63a0e9404e92dce9e026b0826099443116357b1a4510046961",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Claire",
+      "download": "CodaCode-Card-04-Claire.png",
+      "file": "cards/codacode-card-04-claire.enc",
+      "sha256": "ec04cdcea5bfb49951c147557c2086de8426773c29dfea49a79c8cbdbc924e79",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Ch3rry",
+      "download": "CodaCode-Card-05-Ch3rry.png",
+      "file": "cards/codacode-card-05-ch3rry.enc",
+      "sha256": "ca91fb4b7f335dcf8ecd3bb27950fd30b201b70ef38b05e5409512ac2ed99fbe",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Amelia",
+      "download": "CodaCode-Card-06-Amelia.png",
+      "file": "cards/codacode-card-06-amelia.enc",
+      "sha256": "9f8ce64daf4886dc479fc5b03fae69fec2244a20ee3a6b6c8ff2fb4ee8b11952",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Sabrina",
+      "download": "CodaCode-Card-07-Sabrina.png",
+      "file": "cards/codacode-card-07-sabrina.enc",
+      "sha256": "936c9c104ca3b3167aaf8b5a61b26af5d07c38d07b1177aef18a0c9876efa7a8",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Shay",
+      "download": "CodaCode-Card-08-Shay.png",
+      "file": "cards/codacode-card-08-shay.enc",
+      "sha256": "f2bbdcfc6e319c4ad5265b6247b6f1feddc3f62dc7291dfde49decf5e4fdeae6",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    },
+    {
+      "name": "Rhyse",
+      "download": "CodaCode-Card-09-Rhyse.png",
+      "file": "cards/codacode-card-09-rhyse.enc",
+      "sha256": "2352afe9b882daf1cf7d509fab1287ed9dcfc1350ec7a1ab6c350a6322ae06b2",
+      "made": "2026-11-22",
+      "updated": "2026-11-22"
+    }
+  ]
+}
