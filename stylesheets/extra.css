@@ -469,9 +469,6 @@ html:not(.coda-authed) .md-header {
 [data-md-color-scheme="slate"] .quiz-msg--bad { color: #ff7b7b; }
 [data-md-color-scheme="slate"] .quiz-next { color: #fff; background: #1a73e8; }
 
-/* Logo has a white background, so round it off in dark mode */
-[data-md-color-scheme="slate"] .md-header__button.md-logo img { border-radius: 8px; }
-
 /* ---- Role Hangman ---- */
 .hangman, .hangman * { font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important; }
 .hangman { max-width: 640px; margin-top: 12px; }
