@@ -25,6 +25,7 @@
     result.textContent = "";
     var card = el("div", "bc-card");
     var stripe = el("div", "bc-stripe");
+    if (p.all) { var a = el("i"); a.className = "bc-stripe--all"; stripe.appendChild(a); }
     p.departments.forEach(function (d) { var i = el("i"); i.className = "bc-stripe--" + d.toLowerCase(); stripe.appendChild(i); });
     card.appendChild(stripe);
 

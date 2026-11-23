@@ -18,7 +18,7 @@ def barcode(value, W=440, H=64):
 def card(i, p):
     name = p["name"].replace(" (Alias)", ""); alias = "(Alias)" in p["name"]
     depts = p["departments"]; num = bn.barcode_number(p, codes); cid = bn.grouped(num)
-    stripe = "".join(f'<i style="background:{C[d]}"></i>' for d in depts)
+    stripe = (f'<i style="background:{EXEC}"></i>' if p.get("all") else "") + "".join(f'<i style="background:{C[d]}"></i>' for d in depts)
     dots = ""
     if p.get("all"):
         dots += f'<span><b style="background:{EXEC}"></b>All Departments</span>'
